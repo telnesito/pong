@@ -1,3 +1,5 @@
+import Palas from "../gameObjects/palas.js"
+
 export default class Scene_play extends Phaser.Scene {
   constructor() {
     super({ key: 'Scene_play' })
@@ -11,15 +13,23 @@ export default class Scene_play extends Phaser.Scene {
     // Dibujar el separador
     this.add.image(width / 2, height / 2, 'separador')
     // Dibujar pala izquierda
-    this.izq = this.add.image(30, height / 2, 'izq')
+
+    this.izq = new Palas(this, 30, height / 2, 'izq')
     // Dibujar pala derecha
-    this.der = this.add.image(width - 30, height / 2, 'der')
+
+    this.der = new Palas(this, width - 30, height / 2, 'der')
+
     // Dibujar bola
+    this.physics.world.setBoundsCollision(false, false, true, true)
     this.ball = this.physics.add.image(width / 2, height / 2, 'ball')
     this.ball.setVelocityX(-180)
     this.ball.setCollideWorldBounds(true)
     this.ball.setBounce(1)
 
-    this.physics.add.collider(this.ball, this.izq)
+    this.physics.add.collider(this.ball, this.izq, this.chocaPelota, null, this)
+    this.physics.add.collider(this.ball, this.der, this.chocaPelota, null, this)
+  }
+  chocaPelota() {
+
   }
 }
