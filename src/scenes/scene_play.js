@@ -7,6 +7,11 @@ export default class Scene_play extends Phaser.Scene {
   preload() {
     console.log('La Scene play se ha cargado')
   }
+  update() {
+    if (this.ball.x < 0 || this.ball.x > this.sys.game.config.width) {
+      this.ball.setPosition(this.sys.game.config.width / 2, this.sys.game.config.height / 2)
+    }
+  }
   create() {
     // Obtener el tama;o y alto del juego para centrar el separador
     const { width, height } = this.sys.game.config
@@ -20,6 +25,8 @@ export default class Scene_play extends Phaser.Scene {
     this.der = new Palas(this, width - 30, height / 2, 'der')
 
     // Dibujar bola
+
+    // Que lados del mundo pueden rebotar
     this.physics.world.setBoundsCollision(false, false, true, true)
     this.ball = this.physics.add.image(width / 2, height / 2, 'ball')
     this.ball.setVelocityX(-180)
@@ -30,6 +37,8 @@ export default class Scene_play extends Phaser.Scene {
     this.physics.add.collider(this.ball, this.der, this.chocaPelota, null, this)
   }
   chocaPelota() {
+
+    this.ball.setVelocityY(Phaser.Math.Between(-120, 120))
 
   }
 }
