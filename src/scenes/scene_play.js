@@ -47,6 +47,7 @@ export default class Scene_play extends Phaser.Scene {
     // Dibujar pala izquierda
 
     this.izq = new Palas(this, 30, height / 2, 'izq')
+
     // Dibujar pala derecha
 
     this.der = new Palas(this, width - 30, height / 2, 'der')
