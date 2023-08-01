@@ -1,5 +1,7 @@
 
 import Bootloader from "./bootloader.js"
+
+// configuracion del juego
 const config = {
   width: 640,
   height: 400,
