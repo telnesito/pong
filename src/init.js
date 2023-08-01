@@ -1,5 +1,6 @@
 
 import Bootloader from "./bootloader.js"
+import Scene_play from "./scenes/scene_play.js"
 
 // configuracion del juego
 const config = {
@@ -10,7 +11,7 @@ const config = {
     default: 'arcade'
   },
   scene: [
-    Bootloader
+    Bootloader, Scene_play
   ]
 }
 
