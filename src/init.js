@@ -9,6 +9,7 @@ const config = {
   parent: 'contenedor',
   physics: {
     default: 'arcade'
+
   },
   scene: [
     Bootloader, Scene_play
